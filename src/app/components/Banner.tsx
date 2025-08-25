@@ -7,14 +7,14 @@ export default function Banner() {
   return (
     <section
       id="banner"
-      className="relative flex flex-col items-center justify-center text-center py-20 px-6 bg-gradient-to-b from-[#FF9966] to-[#FF722B]"
+      className="relative flex flex-col items-center justify-center text-center py-20 px-6 bg-gradient-to-b from-[#FF722B] to-white"
     >
       {/* Image */}
       <FadeInWhenVisible delay={0.1}>
         <img
-          src="/images/dev.png"
+          src="/images/profil.png"
           alt="Illustration développeur"
-          className="w-40 h-40 rounded-full shadow-lg mb-6"
+          className="w-200 h-140 rounded-full  mb-6"
         />
       </FadeInWhenVisible>
 
