@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import FadeInWhenVisible from "./FadeInWhenVisible";
+import Typewriter from "typewriter-effect";
 
 export default function Banner() {
   return (
@@ -14,19 +15,41 @@ export default function Banner() {
         <img
           src="/images/profil.png"
           alt="Illustration développeur"
-          className="lg:w-180 lg:h-130 md:w-100 md:h-70 rounded-full mb-4"
+          className="lg:w-160 lg:h-120 max-md:w-100 max-md:h-70 rounded-full mb-4"
         />
       </FadeInWhenVisible>
 
-      {/* Titre */}
+      {/* Titre statique + ligne typewriter dessous */}
       <FadeInWhenVisible delay={0.2}>
         <h1 className="text-3xl sm:text-4xl font-bold text-[#222]">
-          Bienvenue sur mon Portfolio,{" "}
-          <span className="text-[#FF722B]">Scicluna</span>
+          Bienvenue sur mon Portfolio,
+          {/* Ligne sous le titre qui n'entraîne pas de décalage */}
+          <span
+            className="block min-h-[1.2em] text-[#FF722B]"
+            aria-live="polite"
+          >
+            <Typewriter
+              onInit={(typewriter) => {
+                typewriter
+                  .typeString("Scicluna Mathieu")
+                  .pauseFor(1000)
+                  .deleteAll()
+                  .typeString("Développeur Frontend")
+                  .pauseFor(1200)
+                  .deleteAll()
+                  .start();
+              }}
+              options={{
+                loop: true,
+                delay: 75, // vitesse de frappe
+                deleteSpeed: 40, // vitesse d'effacement
+              }}
+            />
+          </span>
         </h1>
       </FadeInWhenVisible>
 
-      {/* Sous-texte → forcé noir */}
+      {/* Sous-texte */}
       <FadeInWhenVisible delay={0.3}>
         <p className="mt-5 max-w-3xl mx-auto text-base sm:text-lg !text-[#222] leading-relaxed">
           Passionné par le développement et la création web. <br />
