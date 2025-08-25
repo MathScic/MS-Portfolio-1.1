@@ -14,7 +14,7 @@ export default function Banner() {
         <img
           src="/images/profil.png"
           alt="Illustration développeur"
-          className="w-200 h-140 rounded-full  mb-6"
+          className="lg:w-180 lg:h-130 md:w-100 md:h-70 rounded-full mb-4"
         />
       </FadeInWhenVisible>
 
