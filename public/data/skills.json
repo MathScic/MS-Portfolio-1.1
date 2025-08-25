@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "React",
+    "icon": "/images/react.svg",
+    "color": "#61DAFB",
+    "description": "Développement de composants réutilisables avec React, gestion de l'état et intégration d'API."
+  },
+  {
+    "id": 2,
+    "name": "Next.js",
+    "icon": "/images/nextdotjs.svg",
+    "color": "#000000",
+    "description": "Création d'applications fullstack avec Next.js, pages statiques/SSR, optimisation SEO."
+  },
+  {
+    "id": 3,
+    "name": "Node.js",
+    "icon": "/images/nodedotjs.svg",
+    "color": "#339933",
+    "description": "Développement backend avec Node.js, création d’API REST et gestion de bases de données."
+  },
+  {
+    "id": 4,
+    "name": "Tailwind CSS",
+    "icon": "/images/tailwindcss.svg",
+    "color": "#38B2AC",
+    "description": "Mise en page responsive et design rapide avec Tailwind CSS."
+  },
+  {
+    "id": 5,
+    "name": "TypeScript",
+    "icon": "/images/typescript.svg",
+    "color": "#3178C6",
+    "description": "Typage statique et développement robuste avec TypeScript."
+  },
+  {
+    "id": 6,
+    "name": "Git",
+    "icon": "/images/github.svg",
+    "color": "#57182D",
+    "description": "Gestion de version, branches, merges et collaboration avec Git."
+  }
+]

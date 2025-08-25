@@ -1,0 +1,32 @@
+[
+  {
+    "id": "formation",
+    "period": "Mars 2023 – Mars 2024",
+    "title": "Formation Développeur Intégrateur Web",
+    "bullets": [
+      "Apprentissages : HTML, CSS, JavaScript, React, Node.js, Next.js",
+      "Réalisation de projets pédagogiques"
+    ],
+    "icon": "/images/Chapeaux.png",
+
+    "color": "#FF9966"
+  },
+  {
+    "id": "diplome",
+    "period": "Mai 2024",
+    "title": "Diplôme RNCP niveau 5 obtenu",
+    "bullets": ["Validation officielle de la formation avec soutenance finale"],
+    "icon": "/images/Diplome.png",
+
+    "color": "#3A506B"
+  },
+  {
+    "id": "futur",
+    "period": "2025 – À venir",
+    "title": "Projets en cours & futurs déploiements",
+    "bullets": ["Applications personnelles", "Projets professionnels"],
+    "icon": "/images/En-cours.png",
+
+    "color": "#FF9966"
+  }
+]

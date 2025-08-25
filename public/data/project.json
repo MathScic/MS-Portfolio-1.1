@@ -1,0 +1,47 @@
+[
+  {
+    "id": "portfolio",
+    "title": "Portfolio personnel",
+    "summary": "Vitrine Next.js + Tailwind, animations Framer Motion.",
+    "about": "Refonte complète du portfolio : design responsive, header/burger animés, sections modulaires (Banner, À propos, Compétences, Timeline, Projets). Animations fluides, optimisation des images Next/Image, déploiement Vercel.",
+    "stack": ["Next.js", "React", "Tailwind", "Framer Motion"],
+    "category": ["all", "nextjs", "react"],
+    "image": "/images/logo.png",
+    "previewVideo": "",
+    "year": "2025",
+    "links": {
+      "demo": "https://ms-portfolio-mocha.vercel.app",
+      "github": ""
+    }
+  },
+  {
+    "id": "forever-cars",
+    "title": "Forever Cars",
+    "summary": "Site vitrine : design épuré, formulaires, SEO de base.",
+    "about": "Conception d’un site vitrine sobre et performant : structure sémantique, formulaires accessibles, base SEO (meta/OG), styles modulaires et responsive. Prévu pour hébergement statique sur Vercel.",
+    "stack": ["Next.js", "Tailwind"],
+    "category": ["all", "nextjs"],
+    "image": "/images/hero-car.jpg",
+    "previewVideo": "",
+    "year": "2024",
+    "links": {
+      "demo": "",
+      "github": ""
+    }
+  },
+  {
+    "id": "client-wip",
+    "title": "Projet client (en cours)",
+    "summary": "Site évènementiel – structure & contenus en cours.",
+    "about": "Mise en place de l’architecture, intégration des maquettes, composants réutilisables et système de contenu. Travail en itérations avec le client, préparation au déploiement et optimisation des performances.",
+    "stack": ["Next.js", "Tailwind"],
+    "category": ["all", "nextjs"],
+    "image": "/images/logo-bréhal.png",
+    "previewVideo": "",
+    "year": "2025",
+    "links": {
+      "demo": "",
+      "github": ""
+    }
+  }
+]
