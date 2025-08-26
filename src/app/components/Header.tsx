@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import BurgerMenu from "./BurgerMenu";
 
@@ -8,64 +9,75 @@ export default function Header() {
   const [open, setOpen] = useState(false);
 
   const links = [
-    { href: "#about", label: "À propos" },
-    { href: "#projects", label: "Projets" },
+    { href: "/about", label: "À propos" },
+    { href: "/projects", label: "Projets" },
+    { href: "/contact", label: "Contact" },
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-white shadow-sm">
-      <nav className="flex h-16 items-center justify-between px-4 md:mx-20 lg:mx-90">
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100 shadow-[0_1px_10px_rgba(0,0,0,0.03)]">
+      <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-1">
-          <img src="/images/logo.png" alt="Logo MS" width={100} height={60} />
+        <Link
+          href="/"
+          aria-label="Accueil — MS Portfolio"
+          className="flex items-center"
+        >
+          <Image
+            src="/images/logo.png"
+            alt="MS"
+            width={120}
+            height={40}
+            priority
+            className="h-8 w-auto"
+          />
         </Link>
 
-        {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-12">
+        {/* Liens desktop */}
+        <div className="hidden md:flex items-center gap-10">
           <Link
             href="/about"
-            className="px-2 py-1 text-lg font-semibold text-[#222] hover:opacity-80"
+            className="px-2 py-1 text-[15px] font-semibold text-[#222] hover:opacity-80"
           >
             À propos
           </Link>
           <Link
             href="/projects"
-            className="px-2 py-1 text-lg font-semibold text-[#222] hover:opacity-80"
+            className="px-2 py-1 text-[15px] font-semibold text-[#222] hover:opacity-80"
           >
             Projets
           </Link>
           <Link
             href="/contact"
-            className="inline-flex items-center px-6 py-2 text-lg font-semibold rounded-full 
-                       bg-[#FF722B] text-white hover:bg-[#222] hover:text-[#ff9966] transition-colors"
+            className="inline-flex items-center rounded-full bg-[#FF722B] px-6 py-2 text-[15px] font-semibold text-white transition-colors hover:bg-[#222] hover:text-[#FF9966]"
           >
             Contact
           </Link>
         </div>
 
-        {/* Burger Menu */}
+        {/* Burger mobile */}
         <button
-          className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-md border border-gray-300"
+          type="button"
           aria-label="Ouvrir le menu"
           onClick={() => setOpen(true)}
+          className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-md border border-gray-300"
         >
           <svg
-            className="text-[#222]"
+            viewBox="0 0 24 24"
             width="20"
             height="20"
-            viewBox="0 0 24 24"
+            className="text-[#222]"
             fill="none"
             stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
           >
-            <path
-              d="M3 6h18M3 12h18M3 18h18"
-              strokeWidth="2"
-              strokeLinecap="round"
-            />
+            <path d="M3 6h18M3 12h18M3 18h18" />
           </svg>
         </button>
       </nav>
 
+      {/* Panneau mobile */}
       <BurgerMenu open={open} onClose={() => setOpen(false)} links={links} />
     </header>
   );
