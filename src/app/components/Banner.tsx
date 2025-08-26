@@ -10,22 +10,27 @@ export default function Banner() {
       id="banner"
       className="relative flex flex-col items-center justify-center text-center py-20 px-6 bg-gradient-to-b from-[#FF722B] to-white"
     >
-      {/* Image */}
+      {/* Image centrée */}
       <FadeInWhenVisible delay={0.1}>
         <img
           src="/images/profil.png"
           alt="Illustration développeur"
-          className="lg:w-160 lg:h-120 max-md:w-100 max-md:h-70 rounded-full mb-4"
+          className="w-80 h-50md:w-120 md:h-90 rounded-full mb-6 object-cover mx-auto"
         />
       </FadeInWhenVisible>
 
-      {/* Titre statique + ligne typewriter dessous */}
+      {/* Titre + typewriter (même taille, mobile plus petit, no-wrap en mobile) */}
       <FadeInWhenVisible delay={0.2}>
-        <h1 className="text-3xl sm:text-4xl font-bold text-[#222]">
+        <h1
+          className="font-bold text-[#222] leading-tight
+                       text-3xl sm:text-5xl md:text-6xl"
+        >
           Bienvenue sur mon Portfolio,
-          {/* Ligne sous le titre qui n'entraîne pas de décalage */}
           <span
-            className="block min-h-[1.2em] text-[#FF722B]"
+            className="block mt-2 min-h-[1.2em]
+                       text-3xl sm:text-5xl md:text-6xl
+                       text-[#FF722B]
+                       whitespace-nowrap sm:whitespace-normal"
             aria-live="polite"
           >
             <Typewriter
@@ -39,11 +44,7 @@ export default function Banner() {
                   .deleteAll()
                   .start();
               }}
-              options={{
-                loop: true,
-                delay: 75, // vitesse de frappe
-                deleteSpeed: 40, // vitesse d'effacement
-              }}
+              options={{ loop: true, delay: 75, deleteSpeed: 40 }}
             />
           </span>
         </h1>
@@ -51,7 +52,7 @@ export default function Banner() {
 
       {/* Sous-texte */}
       <FadeInWhenVisible delay={0.3}>
-        <p className="mt-5 max-w-3xl mx-auto text-base sm:text-lg !text-[#222] leading-relaxed">
+        <p className="mt-6 max-w-3xl mx-auto text-lg sm:text-xl text-[#222] leading-relaxed">
           Passionné par le développement et la création web. <br />
           Je tente de donner vie à vos projets.
         </p>

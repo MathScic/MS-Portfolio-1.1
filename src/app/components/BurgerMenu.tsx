@@ -15,7 +15,7 @@ export default function BurgerMenu({
   onClose: () => void;
   links: NavLink[];
 }) {
-  // Empêche le scroll quand menu ouvert
+  // Empêche le scroll de la page quand le menu est ouvert
   useEffect(() => {
     const root = document.documentElement;
     if (open) root.classList.add("overflow-hidden");
@@ -25,60 +25,65 @@ export default function BurgerMenu({
 
   return (
     <>
-      {/* Backdrop */}
+      {/* Backdrop au-dessus de la page, en dessous du panneau */}
       <div
-        className={`fixed inset-0 z-40 bg-black/60 transition-opacity duration-300 ${
-          open
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"
-        }`}
+        className={`fixed inset-0 z-[998] bg-black/60 transition-opacity duration-300
+          ${
+            open
+              ? "opacity-100 pointer-events-auto"
+              : "opacity-0 pointer-events-none"
+          }`}
         onClick={onClose}
         aria-hidden="true"
       />
 
-      {/* Menu panel */}
+      {/* Panneau plein écran (couvre tout, pas de transparence) */}
       <aside
-        className={`fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#444] 
-        transition-transform duration-300 ease-out 
-        ${open ? "translate-x-0" : "translate-x-full"}`}
+        className={`fixed inset-0 z-[999] flex flex-col bg-[#2d2d2d] text-[#ff9966]
+          transition-transform duration-300 ease-out
+          ${open ? "translate-x-0" : "translate-x-full"}`}
         role="dialog"
         aria-modal="true"
         aria-label="Menu de navigation"
       >
-        {/* Logo */}
-        <div className="absolute top-6 left-6">
-          <Image
-            src="/images/logo.png"
-            alt="Logo MS"
-            width={80}
-            height={50}
-            priority
-          />
+        {/* Barre haute */}
+        <div className="relative flex items-center justify-between px-6 h-16 border-b border-white/10">
+          {/* Logo cliquable = accueil */}
+          <Link href="/" onClick={onClose} aria-label="Aller à l’accueil">
+            <Image
+              src="/images/logo.png"
+              alt="Logo MS"
+              width={90}
+              height={54}
+              priority
+              className="cursor-pointer"
+            />
+          </Link>
+
+          {/* Bouton fermer */}
+          <button
+            aria-label="Fermer le menu"
+            onClick={onClose}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#ff9966] text-white hover:bg-[#ff884d] transition"
+          >
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              fill="none"
+            >
+              <path
+                d="M6 6l12 12M18 6L6 18"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+            </svg>
+          </button>
         </div>
 
-        {/* Bouton fermer */}
-        <button
-          aria-label="Fermer le menu"
-          onClick={onClose}
-          className="absolute top-6 right-6 inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#ff9966] text-white hover:bg-primary transition-colors"
-        >
-          <svg
-            width="22"
-            height="22"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            fill="none"
-          >
-            <path
-              d="M6 6l12 12M18 6L6 18"
-              strokeWidth="2"
-              strokeLinecap="round"
-            />
-          </svg>
-        </button>
-
-        {/* Liens centrés */}
-        <nav className="flex flex-col items-center gap-8 text-2xl font-bold text-[#ff9966]">
+        {/* Liens centraux */}
+        <nav className="flex-1 flex flex-col items-center justify-center gap-8 text-2xl font-bold">
           {links.map((l) => (
             <Link
               key={l.href}
@@ -89,8 +94,6 @@ export default function BurgerMenu({
               {l.label}
             </Link>
           ))}
-
-          {/* Lien Contact toujours présent */}
           <Link
             href="/contact"
             onClick={onClose}

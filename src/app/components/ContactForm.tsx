@@ -87,7 +87,7 @@ export default function ContactForm() {
             autoComplete="name"
             required
             className="mt-1 w-full rounded-xl border border-gray-200 bg-white px-4 py-3 outline-none
-                       focus:ring-2 focus:ring-[#3A506B]/30"
+                       focus:ring-2 focus:ring-[#3A506B]/30 text-[#222] placeholder-[#6b7280]"
             placeholder="Votre nom"
           />
         </motion.div>
@@ -105,7 +105,7 @@ export default function ContactForm() {
             autoComplete="email"
             required
             className="mt-1 w-full rounded-xl border border-gray-200 bg-white px-4 py-3 outline-none
-                       focus:ring-2 focus:ring-[#3A506B]/30"
+                       focus:ring-2 focus:ring-[#3A506B]/30 text-[#222] placeholder-[#6b7280]"
             placeholder="vous@exemple.com"
           />
         </motion.div>
@@ -123,7 +123,7 @@ export default function ContactForm() {
           required
           rows={6}
           className="mt-1 w-full rounded-xl border border-gray-200 bg-white px-4 py-3 outline-none
-                     focus:ring-2 focus:ring-[#3A506B]/30"
+                     focus:ring-2 focus:ring-[#3A506B]/30 text-[#222] placeholder-[#6b7280]"
           placeholder="Décrivez brièvement votre besoin…"
         />
       </motion.div>
