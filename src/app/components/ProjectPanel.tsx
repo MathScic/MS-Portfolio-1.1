@@ -12,11 +12,37 @@ export default function ProjectPanel({
   onClose: () => void;
 }) {
   const p = project;
+  if (!p) return null;
 
   return (
-    <div className="p-6 md:p-8">
-      {/* Header */}
-      <div className="flex items-start justify-between gap-4">
+    <div className="relative pt-16 pb-10 px-6 md:px-8">
+      {/* Bouton close FIXE (toujours visible) */}
+      <button
+        type="button"
+        onClick={onClose}
+        aria-label="Fermer le panneau projet"
+        className="fixed top-4 right-4 z-[1102]
+                   inline-flex items-center justify-center h-10 w-10 rounded-full
+                   bg-[#222] text-white hover:bg-[#FF722B] transition-colors
+                   shadow-lg ring-1 ring-black/10"
+      >
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          fill="none"
+        >
+          <path
+            d="M6 6l12 12M18 6L6 18"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+        </svg>
+      </button>
+
+      {/* Header dans le flux (desktop), masqué sur mobile pour éviter la redite */}
+      <div className="hidden sm:flex items-start justify-between gap-4">
         <h3 className="text-2xl md:text-3xl font-bold text-[#222]">
           {p.title}
         </h3>
@@ -38,7 +64,12 @@ export default function ProjectPanel({
         </button>
       </div>
 
-      {/* Image standardisée 16:9 */}
+      {/* Titre visible en mobile */}
+      <h3 className="sm:hidden mt-2 text-2xl font-bold text-[#222]">
+        {p.title}
+      </h3>
+
+      {/* Image 16:9 standardisée */}
       <div className="mt-6 overflow-hidden rounded-xl bg-gray-50 border">
         <div className="relative aspect-video w-full">
           <Image
@@ -55,7 +86,6 @@ export default function ProjectPanel({
       {/* À propos */}
       <h4 className="mt-6 text-lg font-semibold text-[#222]">À propos</h4>
       <p className="mt-2 text-[#222]/80">
-        {/* Utilise p.about si tu l’ajoutes dans le JSON, sinon fallback sur summary */}
         {(p as { about?: string }).about ?? p.summary}
       </p>
 
@@ -74,7 +104,7 @@ export default function ProjectPanel({
         ))}
       </div>
 
-      {/* Website (lien texte) */}
+      {/* Website */}
       <h4 className="mt-6 text-lg font-semibold text-[#222]">Website</h4>
       {p.links?.demo ? (
         <a
