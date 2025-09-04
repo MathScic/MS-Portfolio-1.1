@@ -62,22 +62,17 @@ export default function Projects() {
     return () => window.removeEventListener("keydown", onKey);
   }, [current]);
 
-  // 🔒 Lock du scroll de la page quand le panel est ouvert (mobile + iOS safe)
+  // 🔒 Lock du scroll quand le panel est ouvert
   useEffect(() => {
     if (!current) return;
-
     const body = document.body;
     const scrollY = window.scrollY;
-
-    // lock
     body.style.position = "fixed";
     body.style.top = `-${scrollY}px`;
     body.style.left = "0";
     body.style.right = "0";
     body.style.width = "100%";
     body.style.overflow = "hidden";
-
-    // unlock + restore
     return () => {
       const top = body.style.top;
       body.style.position = "";
@@ -95,22 +90,20 @@ export default function Projects() {
 
   return (
     <section id="projects" className="py-20 bg-white">
-      {/* ⬇️ élargit le container pour tenir 3×~400px */}
+      {/* élargi pour tenir 3 cartes ~400px */}
       <div className="mx-auto max-w-7xl px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-[#3A506B] text-center">
+        <h2 className="text-3xl md:text-4xl font-bold text-primary text-center">
           Projets
         </h2>
 
         <Filters active={filter} onChange={setFilterUrl} filters={FILTERS} />
 
-        {/* GRID */}
-        <div
-          className="mt-12 grid gap-6
-                    grid-cols-1         /* mobile: 1 */
-                    md:grid-cols-2      /* tablette: 2 */
-                    lg:grid-cols-3      /* desktop: 3 */
-                    items-stretch"
-        >
+        {/* GRID
+            - mobile: 1 colonne
+            - tablette (md): 2 colonnes
+            - desktop (lg+): 3 colonnes
+            Avec max-w-7xl + gap-6 => ~400px/carte sur desktop */}
+        <div className="mt-12 grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-stretch">
           {filtered.map((p, i) => (
             <ProjectCard
               key={p.id}
@@ -126,17 +119,14 @@ export default function Projects() {
       <AnimatePresence>
         {current && (
           <>
-            {/* Backdrop au-dessus du header */}
             <motion.div
               className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[1100]"
               onClick={close}
-              onTouchMove={(e) => e.preventDefault()} // stop scroll sur iOS
+              onTouchMove={(e) => e.preventDefault()}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             />
-
-            {/* Panel scrollable, sans propagation */}
             <motion.div
               className="fixed right-0 top-0 h-full w-full md:w-[700px] bg-white z-[1101]
                          shadow-2xl overflow-y-auto overscroll-contain"
