@@ -2,22 +2,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    // couvre les deux structures (avec/sans src) + MDX
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx}",
+    "./src/components/**/*.{js,ts,jsx,tsx}",
   ],
-
-  // Empêche la purge de supprimer tes utilitaires "arbitrary"
-  safelist: [
-    { pattern: /\[grid-template-columns:.*\]/ },
-    { pattern: /\[aspect-ratio:.*\]/ },
-    { pattern: /\[display:-webkit-box\]/ },
-    { pattern: /\[-webkit-line-clamp:.*\]/ },
-    { pattern: /\[-webkit-box-orient:.*\]/ },
-  ],
-
   theme: {
     extend: {
       colors: {
@@ -33,8 +20,5 @@ module.exports = {
       },
     },
   },
-
-  // Optionnel mais pratique si tu utilises `line-clamp-2` etc.
-  // npm i -D @tailwindcss/line-clamp
-  plugins: [require("@tailwindcss/line-clamp")],
+  plugins: [],
 };
