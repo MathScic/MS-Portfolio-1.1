@@ -103,7 +103,7 @@ export default function Projects() {
         <Filters active={filter} onChange={setFilterUrl} filters={FILTERS} />
 
         {/* GRID */}
-        <div className="mt-12 grid gap-8">
+        <div className="mt-12 grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((p, i) => (
             <ProjectCard
               key={p.id}
