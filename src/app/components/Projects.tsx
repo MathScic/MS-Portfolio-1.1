@@ -95,7 +95,8 @@ export default function Projects() {
 
   return (
     <section id="projects" className="py-20 bg-white">
-      <div className="mx-auto max-w-6xl px-4">
+      {/* ⬇️ élargit le container pour tenir 3×~400px */}
+      <div className="mx-auto max-w-7xl px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-[#3A506B] text-center">
           Projets
         </h2>
@@ -103,7 +104,13 @@ export default function Projects() {
         <Filters active={filter} onChange={setFilterUrl} filters={FILTERS} />
 
         {/* GRID */}
-        <div className="mt-12 grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-stretch w-400">
+        <div
+          className="mt-12 grid gap-6
+                    grid-cols-1         /* mobile: 1 */
+                    md:grid-cols-2      /* tablette: 2 */
+                    lg:grid-cols-3      /* desktop: 3 */
+                    items-stretch"
+        >
           {filtered.map((p, i) => (
             <ProjectCard
               key={p.id}
