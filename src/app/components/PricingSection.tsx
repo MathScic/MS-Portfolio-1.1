@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import pricing from "../../../public/data/pricing.json";
 
 type Offer = {
@@ -12,20 +12,20 @@ type Offer = {
   features: string[];
 };
 
-// --- Animations ---
-const containerVariants = {
+// ---- Animations corrigées ----
+const containerVariants: Variants = {
   hidden: { opacity: 0, y: 12 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.35, ease: "easeOut" },
+    transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] }, // ✅ cubic-bezier
   },
 };
-const gridVariants = {
+const gridVariants: Variants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.06, delayChildren: 0.05 } },
 };
-const cardVariants = {
+const cardVariants: Variants = {
   hidden: { opacity: 0, y: 16, scale: 0.98 },
   visible: {
     opacity: 1,
@@ -34,20 +34,20 @@ const cardVariants = {
     transition: { type: "spring", stiffness: 220, damping: 24 },
   },
 };
-const listVariants = {
+const listVariants: Variants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.03 } },
 };
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 6 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.2 } },
 };
 
-// Nettoie les emojis/symboles en début de phrase (✅ 🚀 etc.)
+// Nettoie d’éventuels emojis en début de feature
 const cleanLabel = (s: string) =>
   s.replace(/^[^\p{Letter}\p{Number}]+/u, "").trim();
 
-// Icône check (SVG) – accessible et cohérent visuellement
+// Icône check
 function CheckIcon() {
   return (
     <svg
@@ -90,16 +90,9 @@ export default function PricingSection() {
               onClick={() => setSelected(offer.id)}
               whileHover={{ y: -4, scale: 1.01 }}
               whileTap={{ scale: 0.995 }}
-              transition={{ type: "spring", stiffness: 280, damping: 22 }}
               className="relative cursor-pointer bg-white rounded-2xl shadow-md p-8 flex flex-col border-2 border-transparent transition-colors"
-              aria-pressed={selected === offer.id}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) =>
-                (e.key === "Enter" || e.key === " ") && setSelected(offer.id)
-              }
             >
-              {/* Halo/bordure animée quand sélectionné */}
+              {/* Halo bleu */}
               <AnimatePresence>
                 {selected === offer.id && (
                   <motion.div
@@ -117,7 +110,6 @@ export default function PricingSection() {
                 <h3 className="text-xl font-semibold mb-2">{offer.title}</h3>
                 <p className="text-4xl font-bold mb-6">{offer.price}</p>
 
-                {/* LISTE ALIGNEE : icône fixe à gauche, texte fluide à droite */}
                 <motion.ul
                   className="flex-1 space-y-3 mb-6"
                   variants={listVariants}
@@ -144,7 +136,7 @@ export default function PricingSection() {
                 <motion.button
                   onClick={(e) => {
                     e.stopPropagation();
-                    router.push("/price");
+                    router.push("/pricing");
                   }}
                   whileHover={{ y: -1 }}
                   whileTap={{ scale: 0.98 }}
