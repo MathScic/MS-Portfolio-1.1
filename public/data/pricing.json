@@ -1,0 +1,38 @@
+[
+  {
+    "id": "landing",
+    "title": "Landing Express",
+    "price": "À partir de 400€",
+    "features": [
+      "1 page optimisée",
+      "Design moderne (Figma)",
+      "Déploiement Vercel",
+      "SEO de base",
+      "Livraison en 10 jours"
+    ]
+  },
+  {
+    "id": "vitrine",
+    "title": "Site Vitrine 5 pages",
+    "price": "À partir de 900€",
+    "features": [
+      "Accueil, Services, Réalisations",
+      "À propos & Contact inclus",
+      "CMS léger (Markdown/Notion)",
+      "Formation 1h incluse",
+      "Livraison en 3-4 semaines"
+    ]
+  },
+  {
+    "id": "refonte",
+    "title": "Refonte Performance + SEO",
+    "price": "À partir de 500€",
+    "features": [
+      "Audit complet (perf, SEO)",
+      "Core Web Vitals 90+",
+      "RGPD (cookies & privacy)",
+      "Boost SEO local",
+      "Livraison rapide"
+    ]
+  }
+]

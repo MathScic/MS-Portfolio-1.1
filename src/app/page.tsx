@@ -6,6 +6,7 @@ import ContactSection from "./components/ContactSection";
 import Projects from "./components/Projects";
 import Skills from "./components/Skills";
 import TimeLine from "./components/TimeLine";
+import PricingSection from "./components/PricingSection";
 
 export default function Page() {
   return (
@@ -17,7 +18,7 @@ export default function Page() {
       <Suspense>
         <Projects />
       </Suspense>
-
+      <PricingSection />
       <ContactSection />
     </main>
   );

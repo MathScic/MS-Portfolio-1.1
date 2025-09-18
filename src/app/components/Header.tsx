@@ -36,6 +36,12 @@ export default function Header() {
             Projets
           </Link>
           <Link
+            href="/pricing"
+            className="px-2 py-1 text-lg font-semibold text-[#222] hover:opacity-80"
+          >
+            Tarifs
+          </Link>
+          <Link
             href="/contact"
             className="inline-flex items-center px-6 py-2 text-lg font-semibold rounded-full 
                        bg-[#FF722B] text-white hover:bg-[#222] hover:text-[#ff9966] transition-colors"
